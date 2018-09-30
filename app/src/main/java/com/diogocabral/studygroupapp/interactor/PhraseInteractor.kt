@@ -1,12 +1,12 @@
 package com.diogocabral.studygroupapp.interactor
 
-import com.diogocabral.studygroupapp.entity.Phrase
+import com.diogocabral.studygroupapp.entity.PhraseEntity
 
 class PhraseInteractor {
 
-    private var phrases: ArrayList<Phrase> = ArrayList()
+    private var phrases: ArrayList<PhraseEntity> = ArrayList()
 
-    fun fetchPhrases(): ArrayList<Phrase> {
+    fun fetchPhrases(): ArrayList<PhraseEntity> {
         generatePhrases()
         return phrases
     }
@@ -20,7 +20,7 @@ class PhraseInteractor {
                 "Nobody panics when things go “according to plan”. Even if the plan is horrifying!"
         )
 
-        for (text in localPhrases) phrases.add(Phrase(text))
+        for (text in localPhrases) phrases.add(PhraseEntity(text))
     }
 
 }

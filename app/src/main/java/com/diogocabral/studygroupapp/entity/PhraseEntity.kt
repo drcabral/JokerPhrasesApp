@@ -1,3 +1,3 @@
 package com.diogocabral.studygroupapp.entity
 
-class Phrase(var text: String)
+class PhraseEntity(var text: String)
