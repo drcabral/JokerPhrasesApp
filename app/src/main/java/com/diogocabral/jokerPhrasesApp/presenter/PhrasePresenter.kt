@@ -1,8 +1,8 @@
-package com.diogocabral.studygroupapp.presenter
+package com.diogocabral.jokerPhrasesApp.presenter
 
-import com.diogocabral.studygroupapp.entity.PhraseEntity
-import com.diogocabral.studygroupapp.interactor.PhraseInteractor
-import com.diogocabral.studygroupapp.view.MainActivity
+import com.diogocabral.jokerPhrasesApp.entity.PhraseEntity
+import com.diogocabral.jokerPhrasesApp.interactor.PhraseInteractor
+import com.diogocabral.jokerPhrasesApp.view.MainActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 

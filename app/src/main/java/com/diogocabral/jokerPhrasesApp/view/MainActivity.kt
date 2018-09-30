@@ -1,11 +1,10 @@
-package com.diogocabral.studygroupapp.view
+package com.diogocabral.jokerPhrasesApp.view
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.diogocabral.studygroupapp.R
-import com.diogocabral.studygroupapp.presenter.PhrasePresenter
+import com.diogocabral.jokerPhrasesApp.R
+import com.diogocabral.jokerPhrasesApp.presenter.PhrasePresenter
 import kotlinx.android.synthetic.main.activity_main.*
-import java.util.*
 
 class MainActivity : AppCompatActivity() {
 

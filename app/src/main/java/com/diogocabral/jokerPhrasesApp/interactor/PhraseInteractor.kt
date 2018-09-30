@@ -1,6 +1,6 @@
-package com.diogocabral.studygroupapp.interactor
+package com.diogocabral.jokerPhrasesApp.interactor
 
-import com.diogocabral.studygroupapp.entity.PhraseEntity
+import com.diogocabral.jokerPhrasesApp.entity.PhraseEntity
 
 class PhraseInteractor {
 
