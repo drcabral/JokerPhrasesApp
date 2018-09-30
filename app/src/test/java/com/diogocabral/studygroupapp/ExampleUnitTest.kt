@@ -1,4 +1,4 @@
-package com.weatherapp.diogocabral.studygroupapp
+package com.diogocabral.studygroupapp
 
 import org.junit.Test
 
