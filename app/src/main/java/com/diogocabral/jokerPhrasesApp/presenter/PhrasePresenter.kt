@@ -11,7 +11,7 @@ class PhrasePresenter(var view: MainActivity) {
     var interactor: PhraseInteractor = PhraseInteractor()
 
     fun setPhraseOnView() {
-        view.txt_phrase.text = generateRandomPhrase().text
+        view.setPhraseText(generateRandomPhrase().text)
     }
 
     private fun generateRandomPhrase(): PhraseEntity {

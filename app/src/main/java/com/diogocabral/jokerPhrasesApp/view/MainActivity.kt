@@ -19,4 +19,8 @@ class MainActivity : AppCompatActivity() {
             presenter.setPhraseOnView()
         }
     }
+
+    fun setPhraseText(text: String){
+        txt_phrase.text = text
+    }
 }
