@@ -1,9 +1,8 @@
-package com.diogocabral.jokerPhrasesApp.presenter
+package com.diogocabral.viperSampleApp.presenter
 
-import com.diogocabral.jokerPhrasesApp.entity.PhraseEntity
-import com.diogocabral.jokerPhrasesApp.interactor.PhraseInteractor
-import com.diogocabral.jokerPhrasesApp.view.MainActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import com.diogocabral.viperSampleApp.entity.PhraseEntity
+import com.diogocabral.viperSampleApp.interactor.PhraseInteractor
+import com.diogocabral.viperSampleApp.view.MainActivity
 import java.util.*
 
 class PhrasePresenter(var view: MainActivity) {

@@ -1,6 +1,6 @@
-package com.diogocabral.jokerPhrasesApp.interactor
+package com.diogocabral.viperSampleApp.interactor
 
-import com.diogocabral.jokerPhrasesApp.entity.PhraseEntity
+import com.diogocabral.viperSampleApp.entity.PhraseEntity
 
 class PhraseInteractor {
 

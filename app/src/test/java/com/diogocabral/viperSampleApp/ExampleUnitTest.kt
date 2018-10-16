@@ -1,4 +1,4 @@
-package com.diogocabral.jokerPhrasesApp
+package com.diogocabral.viperSampleApp
 
 import org.junit.Test
 

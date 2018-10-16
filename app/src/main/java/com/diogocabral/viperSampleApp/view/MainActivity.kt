@@ -1,9 +1,9 @@
-package com.diogocabral.jokerPhrasesApp.view
+package com.diogocabral.viperSampleApp.view
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.diogocabral.jokerPhrasesApp.R
-import com.diogocabral.jokerPhrasesApp.presenter.PhrasePresenter
+import com.diogocabral.viperSampleApp.R
+import com.diogocabral.viperSampleApp.presenter.PhrasePresenter
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.diogocabral.jokerPhrasesApp
+package com.diogocabral.viperSampleApp
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
