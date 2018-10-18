@@ -6,7 +6,7 @@ What this project already has:
 
 - [x] VIPER folder structure
 - [x] Objects respecting the architecture
-- [ ] Fetch data from REST API
+- [ ] Fetch data from REST API using Retrofit
 - [ ] Unit tests
 - [ ] Integration tests
 - [ ] Instrumentation tests
