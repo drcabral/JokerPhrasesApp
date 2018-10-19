@@ -1,3 +1,5 @@
 package com.diogocabral.viperSampleApp.entity
 
-class PhraseEntity(var text: String)
+import com.google.gson.annotations.SerializedName
+
+class PhraseEntity(@SerializedName("joke") var text: String)

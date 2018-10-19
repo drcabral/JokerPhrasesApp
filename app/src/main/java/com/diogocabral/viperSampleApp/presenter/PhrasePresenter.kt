@@ -14,9 +14,16 @@ class PhrasePresenter(var view: MainActivity) {
     }
 
     private fun generateRandomPhrase(): PhraseEntity {
-        val phrases = interactor.fetchPhrases()
-        val index = generateRandomArrayIndex(phrases)
-        return phrases[index]
+        interactor.fetchPhrases()
+        var index = 0
+        var returnedPhrase = PhraseEntity("teste")
+
+        if(interactor.phrases.size > 0){
+            index = generateRandomArrayIndex(interactor.phrases)
+            returnedPhrase = interactor.phrases[index]
+        }
+
+        return returnedPhrase
     }
 
     private fun generateRandomArrayIndex(list: ArrayList<PhraseEntity>) : Int {

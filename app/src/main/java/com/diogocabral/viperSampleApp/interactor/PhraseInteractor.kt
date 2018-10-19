@@ -1,26 +1,51 @@
 package com.diogocabral.viperSampleApp.interactor
 
+import android.util.Log
 import com.diogocabral.viperSampleApp.entity.PhraseEntity
+import com.diogocabral.viperSampleApp.interactor.service.PhrasesService
+import com.google.gson.GsonBuilder
+import retrofit2.Callback
+import retrofit2.Call
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
-class PhraseInteractor {
 
-    private var phrases: ArrayList<PhraseEntity> = ArrayList()
+class PhraseInteractor : Callback<List<PhraseEntity>> {
 
-    fun fetchPhrases(): ArrayList<PhraseEntity> {
-        generatePhrases()
-        return phrases
+    var phrases: ArrayList<PhraseEntity> = ArrayList()
+    private val BASE_PHRASES_URL : String = "http://api.icndb.com/jokes/"
+    private var phrasesAPI : PhrasesService
+
+    constructor(){
+        val gson = GsonBuilder()
+                .setLenient()
+                .create()
+
+        val retrofit = Retrofit.Builder()
+                .baseUrl(BASE_PHRASES_URL)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build()
+
+        phrasesAPI = retrofit.create(PhrasesService::class.java)
     }
 
-    private fun generatePhrases() {
-        var localPhrases = arrayListOf(
-                "If you're good at something, never do it for free.",
-                "It's not about money...it’s about sending a message. Everything burns!",
-                "I believe, whatever doesn't kill you, simply makes you...stranger.",
-                "Why so serious?",
-                "Nobody panics when things go “according to plan”. Even if the plan is horrifying!"
-        )
+    fun fetchPhrases() {
+        val callToApi = phrasesAPI.fetchRandomPhrase(10)
+        callToApi.enqueue(this)
+    }
 
-        for (text in localPhrases) phrases.add(PhraseEntity(text))
+    override fun onResponse(call: Call<List<PhraseEntity>>, response: Response<List<PhraseEntity>>) {
+        if (response.isSuccessful) {
+            val phrases = response.body()
+            phrases.forEach { phrase -> System.out.println(phrase.text) }
+        } else {
+            System.out.println(response.errorBody())
+        }
+    }
+
+    override fun onFailure(call: Call<List<PhraseEntity>>, t: Throwable) {
+        Log.e("onFailure error", t?.message)
     }
 
 }
