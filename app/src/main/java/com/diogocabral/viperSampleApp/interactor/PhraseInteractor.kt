@@ -2,14 +2,10 @@ package com.diogocabral.viperSampleApp.interactor
 
 import android.util.Log
 import com.diogocabral.viperSampleApp.entity.PhraseEntity
-import com.diogocabral.viperSampleApp.interactor.service.PhrasesService
 import com.diogocabral.viperSampleApp.interactor.utils.HTTPManager
-import com.google.gson.GsonBuilder
 import retrofit2.Callback
 import retrofit2.Call
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 
 class PhraseInteractor : Callback<List<PhraseEntity>> {
