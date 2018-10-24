@@ -10,17 +10,16 @@ class PhrasePresenter(var view: MainActivity) {
     var interactor: PhraseInteractor = PhraseInteractor()
 
     fun setPhraseOnView() {
-        view.setPhraseText(generateRandomPhrase().text)
+        view.setPhraseText(generateRandomPhrase().joke)
     }
 
     private fun generateRandomPhrase(): PhraseEntity {
         interactor.fetchPhrases()
-        var index = 0
-        var returnedPhrase = PhraseEntity("teste")
+        var returnedPhrase = PhraseEntity(0, "Default Joke")
 
-        if(interactor.phrases.size > 0){
-            index = generateRandomArrayIndex(interactor.phrases)
-            returnedPhrase = interactor.phrases[index]
+        interactor.phrasesResult.let {
+            val randomIndex = generateRandomArrayIndex(it?.phrases as ArrayList<PhraseEntity>)
+            returnedPhrase = it.phrases[randomIndex]
         }
 
         return returnedPhrase

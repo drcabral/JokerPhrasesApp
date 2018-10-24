@@ -2,4 +2,4 @@ package com.diogocabral.viperSampleApp.entity
 
 import com.google.gson.annotations.SerializedName
 
-class PhraseEntity(@SerializedName("joke") var text: String)
+data class PhraseEntity(@SerializedName("id") var id: Int, @SerializedName("joke") var joke: String)
