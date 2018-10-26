@@ -1,37 +1,22 @@
 package com.diogocabral.viperSampleApp.interactor
 
-import android.util.Log
-import com.diogocabral.viperSampleApp.entity.PhraseResultEntity
+import com.diogocabral.viperSampleApp.entity.utils.getRandomElement
 import com.diogocabral.viperSampleApp.interactor.utils.HTTPManager
-import retrofit2.Callback
-import retrofit2.Call
-import retrofit2.Response
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 
-class PhraseInteractor : Callback<PhraseResultEntity> {
+class PhraseInteractor {
 
-    var phrasesResult: PhraseResultEntity? = null
-
-    constructor(){
+    init {
         HTTPManager.createPhraseService()
     }
 
-    fun fetchPhrases() {
-        val callToApi = HTTPManager.phrasesAPI.fetchRandomPhrase(10)
-        callToApi.enqueue(this)
+    fun fetchPhrases(): Observable<String?> {
+        return HTTPManager.phrasesService.fetchRandomPhrase(10)
+                .map { it.phrases.getRandomElement()?.joke }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
     }
-
-    override fun onResponse(call: Call<PhraseResultEntity>, response: Response<PhraseResultEntity>) {
-        if (response.isSuccessful) {
-            val phrasesResult = response.body() as PhraseResultEntity
-            phrasesResult.phrases.forEach { phrase -> System.out.println(phrase.joke) }
-        } else {
-            System.out.println(response.errorBody())
-        }
-    }
-
-    override fun onFailure(call: Call<PhraseResultEntity>, t: Throwable) {
-        Log.e("onFailure error", t.message)
-    }
-
 }
