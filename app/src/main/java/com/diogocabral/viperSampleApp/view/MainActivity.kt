@@ -13,11 +13,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        presenter.setPhraseOnView()
+        presenter.generateRandomPhrase()
 
         btn_new_phrase.setOnClickListener {
-            presenter.setPhraseOnView()
+            presenter.generateRandomPhrase()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.disposeCalls()
     }
 
     fun setPhraseText(text: String){

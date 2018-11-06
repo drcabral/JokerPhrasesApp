@@ -1,26 +1,17 @@
 package com.diogocabral.viperSampleApp.interactor
 
-import com.diogocabral.viperSampleApp.entity.PhraseEntity
+import com.diogocabral.viperSampleApp.entity.utils.getRandomElement
+import com.diogocabral.viperSampleApp.interactor.utils.HTTPManager
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
+
 
 class PhraseInteractor {
-
-    private var phrases: ArrayList<PhraseEntity> = ArrayList()
-
-    fun fetchPhrases(): ArrayList<PhraseEntity> {
-        generatePhrases()
-        return phrases
+    fun fetchPhrases(): Observable<String?> {
+        return HTTPManager.phrasesService.fetchRandomPhrase(10)
+                .map { it.phrases.getRandomElement()?.joke }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
     }
-
-    private fun generatePhrases() {
-        var localPhrases = arrayListOf(
-                "If you're good at something, never do it for free.",
-                "It's not about money...it’s about sending a message. Everything burns!",
-                "I believe, whatever doesn't kill you, simply makes you...stranger.",
-                "Why so serious?",
-                "Nobody panics when things go “according to plan”. Even if the plan is horrifying!"
-        )
-
-        for (text in localPhrases) phrases.add(PhraseEntity(text))
-    }
-
 }
