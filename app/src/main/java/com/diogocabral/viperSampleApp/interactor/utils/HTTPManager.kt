@@ -6,11 +6,12 @@ import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object HTTPManager {
-    private val BASE_PHRASES_URL: String = "http://api.icndb.com/jokes/"
-    lateinit var phrasesService: PhrasesService
+private const val BASE_PHRASES_URL: String = "http://api.icndb.com/jokes/"
 
-    fun createPhraseService() {
+object HTTPManager {
+    val phrasesService by lazy { createPhraseService() }
+
+    private fun createPhraseService(): PhrasesService {
         val gson = GsonBuilder()
                 .setLenient()
                 .create()
@@ -21,6 +22,6 @@ object HTTPManager {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()
 
-        phrasesService = retrofit.create(PhrasesService::class.java)
+        return retrofit.create(PhrasesService::class.java)
     }
 }

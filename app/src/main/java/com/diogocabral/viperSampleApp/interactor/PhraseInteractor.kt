@@ -8,11 +8,6 @@ import io.reactivex.schedulers.Schedulers
 
 
 class PhraseInteractor {
-
-    init {
-        HTTPManager.createPhraseService()
-    }
-
     fun fetchPhrases(): Observable<String?> {
         return HTTPManager.phrasesService.fetchRandomPhrase(10)
                 .map { it.phrases.getRandomElement()?.joke }
