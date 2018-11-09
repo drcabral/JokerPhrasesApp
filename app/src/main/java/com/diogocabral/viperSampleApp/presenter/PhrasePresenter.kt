@@ -1,13 +1,13 @@
 package com.diogocabral.viperSampleApp.presenter
 
 import android.util.Log
-import com.diogocabral.viperSampleApp.entity.PhraseEntity
 import com.diogocabral.viperSampleApp.interactor.PhraseInteractor
-import com.diogocabral.viperSampleApp.view.MainActivity
+import com.diogocabral.viperSampleApp.view.PhrasesActivity
 import io.reactivex.disposables.Disposable
-import java.util.*
 
-class PhrasePresenter(var view: MainActivity) {
+private const val PHRASE_INTENT_EXTRA = "initialPhrase"
+
+class PhrasePresenter(var view: PhrasesActivity) {
 
     var interactor: PhraseInteractor = PhraseInteractor()
     var disposable: Disposable? = null
@@ -20,6 +20,12 @@ class PhrasePresenter(var view: MainActivity) {
         }, { e ->
             Log.e("PhrasePresenter", e.message, e)
         })
+    }
+
+    fun setInitialPhrase() {
+        val intent = view.intent
+        val initialPhrase = intent.getStringExtra(PHRASE_INTENT_EXTRA)
+        view.setPhraseText(initialPhrase)
     }
 
     fun disposeCalls() {
