@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Viper Sample App</string>
     <string name="bt_new_phrase">Nova Frase</string>
+    <string name="bt_main_new_phrase">Ver Frase</string>
 </resources>

@@ -3,29 +3,24 @@ package com.diogocabral.viperSampleApp.view
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.diogocabral.viperSampleApp.R
-import com.diogocabral.viperSampleApp.presenter.PhrasePresenter
-import kotlinx.android.synthetic.main.activity_main.*
+import com.diogocabral.viperSampleApp.presenter.MainPresenter
+import kotlinx.android.synthetic.main.main_activity.*
 
 class MainActivity : AppCompatActivity() {
 
-    var presenter: PhrasePresenter = PhrasePresenter(this)
+    private var presenter: MainPresenter = MainPresenter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        presenter.generateRandomPhrase()
+        setContentView(R.layout.main_activity)
 
-        btn_new_phrase.setOnClickListener {
-            presenter.generateRandomPhrase()
+        btn_main_new_phrase.setOnClickListener {
+            presenter.onSeePhraseClicked()
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
         presenter.disposeCalls()
-    }
-
-    fun setPhraseText(text: String){
-        txt_phrase.text = text
     }
 }

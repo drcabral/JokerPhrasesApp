@@ -2,30 +2,24 @@ package com.diogocabral.viperSampleApp.presenter
 
 import android.util.Log
 import com.diogocabral.viperSampleApp.interactor.PhraseInteractor
-import com.diogocabral.viperSampleApp.view.PhrasesActivity
+import com.diogocabral.viperSampleApp.router.PhrasesRouter
+import com.diogocabral.viperSampleApp.view.MainActivity
 import io.reactivex.disposables.Disposable
 
-private const val PHRASE_INTENT_EXTRA = "initialPhrase"
-
-class PhrasePresenter(var view: PhrasesActivity) {
+class MainPresenter(var view: MainActivity) {
 
     var interactor: PhraseInteractor = PhraseInteractor()
     var disposable: Disposable? = null
+    var router: PhrasesRouter = PhrasesRouter(view)
 
-    fun generateRandomPhrase() {
+    fun onSeePhraseClicked() {
         disposable = interactor.fetchPhrases().subscribe({ randomPhrase ->
             randomPhrase?.let {
-                view.setPhraseText(randomPhrase)
+                router.goToPhrasesScreen(randomPhrase)
             }
         }, { e ->
-            Log.e("PhrasePresenter", e.message, e)
+            Log.e("MainPresenter", e.message, e)
         })
-    }
-
-    fun setInitialPhrase() {
-        val intent = view.intent
-        val initialPhrase = intent.getStringExtra(PHRASE_INTENT_EXTRA)
-        view.setPhraseText(initialPhrase)
     }
 
     fun disposeCalls() {
