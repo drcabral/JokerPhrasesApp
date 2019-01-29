@@ -5,9 +5,10 @@ import com.diogocabral.viperSampleApp.interactor.utils.HTTPManager
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
 
-class PhraseInteractor {
+class PhraseInteractor @Inject constructor(){
     fun fetchPhrases(): Observable<String?> {
         return HTTPManager.phrasesService.fetchRandomPhrase(10)
                 .map { it.phrases.getRandomElement()?.joke }

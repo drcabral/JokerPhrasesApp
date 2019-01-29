@@ -4,12 +4,14 @@ import android.util.Log
 import com.diogocabral.viperSampleApp.interactor.PhraseInteractor
 import com.diogocabral.viperSampleApp.view.PhrasesActivity
 import io.reactivex.disposables.Disposable
+import javax.inject.Inject
 
 private const val PHRASE_INTENT_EXTRA = "initialPhrase"
 
-class PhrasePresenter(var view: PhrasesActivity) {
+class PhrasePresenter @Inject constructor(
+        private val view: PhrasesActivity,
+        private val interactor: PhraseInteractor) {
 
-    var interactor: PhraseInteractor = PhraseInteractor()
     var disposable: Disposable? = null
 
     fun generateRandomPhrase() {

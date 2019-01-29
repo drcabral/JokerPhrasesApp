@@ -5,10 +5,12 @@ import com.diogocabral.viperSampleApp.interactor.PhraseInteractor
 import com.diogocabral.viperSampleApp.router.goToPhrasesScreen
 import com.diogocabral.viperSampleApp.view.MainActivity
 import io.reactivex.disposables.Disposable
+import javax.inject.Inject
 
-class MainPresenter(var view: MainActivity) {
+class MainPresenter @Inject constructor(
+        private val view: MainActivity,
+        private val interactor: PhraseInteractor) {
 
-    var interactor: PhraseInteractor = PhraseInteractor()
     var disposable: Disposable? = null
 
     fun onSeePhraseClicked() {
