@@ -4,7 +4,8 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.diogocabral.viperSampleApp.R
 import com.diogocabral.viperSampleApp.presenter.PhrasePresenter
-import kotlinx.android.synthetic.main.phrases_activity.*
+import kotlinx.android.synthetic.main.phrases_activity.btn_new_phrase
+import kotlinx.android.synthetic.main.phrases_activity.txt_phrase
 
 class PhrasesActivity : AppCompatActivity() {
 
