@@ -8,7 +8,7 @@ What this project already has:
 - [x] Objects respecting the architecture
 - [x] Fetch data from REST API using Retrofit
 - [x] Use router
-- [ ] Use dependency injection
+- [x] Use dependency injection
 - [ ] Unit tests
 - [ ] Integration tests
 - [ ] Instrumentation tests
